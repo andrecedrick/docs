@@ -1,0 +1,119 @@
+---
+title: "MCP Server"
+description: "Connect Codex, Claude, and other AI assistants to your Voice AiLunaPro workspace via the Model Context Protocol"
+---
+
+## Overview
+
+Voice AiLunaPro exposes an [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that lets AI assistants like Codex, Claude Code, Claude Desktop, and Cursor access your workspace and documentation. Once connected, an assistant can list your agents, fetch agent definitions, and search AiLunaPro docs on your behalf.
+
+## Prerequisites
+
+- An AiLunaPro API key. Generate one at [`/api-keys`](https://voice.ailunapro.com/api-keys). See [API Keys](/configurations/api-keys).
+- Your AiLunaPro MCP endpoint: `https://voice-api.ailunapro.com/api/v1/mcp/`
+
+The endpoint is also shown in **Platform Settings → MCP Server** inside the AiLunaPro UI.
+
+## Claude Code
+
+Register AiLunaPro as an MCP server with the Claude Code CLI:
+
+```bash
+claude mcp add --transport http ailunapro https://voice-api.ailunapro.com/api/v1/mcp/ \
+  --header "X-API-Key: YOUR_API_KEY"
+```
+
+Replace `YOUR_API_KEY` with the key you generated.
+
+Verify the server is connected:
+
+```bash
+claude mcp list
+```
+
+## Codex
+
+Open Codex's config file (`~/.codex/config.toml`) and add an `ailunapro` MCP server:
+
+```toml
+[mcp_servers.ailunapro]
+url = "https://voice-api.ailunapro.com/api/v1/mcp/"
+http_headers = { "X-API-Key" = "YOUR_API_KEY" }
+```
+
+Replace `YOUR_API_KEY` with the key you generated.
+
+If you prefer to keep the API key out of `config.toml`, store it in an environment variable instead:
+
+```toml
+[mcp_servers.ailunapro]
+url = "https://voice-api.ailunapro.com/api/v1/mcp/"
+env_http_headers = { "X-API-Key" = "AILUNAPRO_API_KEY" }
+```
+
+Then set the API key before starting Codex:
+
+```bash
+export AILUNAPRO_API_KEY="YOUR_API_KEY"
+codex
+```
+
+Verify the server is registered:
+
+```bash
+codex mcp list
+codex mcp get ailunapro
+```
+
+## Claude Desktop
+
+Open Claude Desktop's config file (`claude_desktop_config.json`) and add the `ailunapro` entry under `mcpServers`:
+
+```json
+{
+  "mcpServers": {
+    "ailunapro": {
+      "url": "https://voice-api.ailunapro.com/api/v1/mcp/",
+      "headers": {
+        "X-API-Key": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+Restart Claude Desktop after saving. The AiLunaPro tools should appear in the tool picker.
+
+## Cursor and other MCP clients
+
+Any MCP client that supports Streamable HTTP transport can connect with the same URL and header. Paste the configuration above into your client's MCP settings file and replace `YOUR_API_KEY`.
+
+## Example prompts
+
+Once the MCP server is connected, you can drive AiLunaPro from your coding agent in plain English. A few prompts to try:
+
+**Explore your workspace**
+
+- "List my agents in AiLunaPro."
+- "Show me the definition of the agent called *Lead Qualifier*."
+- "Which credentials and tools are configured in my AiLunaPro workspace?"
+- "List the recordings from my most recent agent."
+
+**Edit an agent**
+
+- "In my *Lead Qualifier* agent, add a new agent node after the greeting that asks the caller for their budget, then routes to the existing qualification node."
+- "Add an end-call node to *Support Bot* that triggers when the user says they are done, with a polite goodbye prompt."
+- "Rename the *intro* node in *Lead Qualifier* to *greeting* and update any edges that reference it."
+- "Change the LLM model on all agent nodes in *Support Bot* to `gpt-4o-mini`."
+
+**Learn the platform**
+
+- "What node types does AiLunaPro support, and what fields does a `knowledge_base` node take?"
+
+<Note>
+Agent edits are saved as a new **draft** version — your published agent keeps serving calls until you explicitly publish the draft from the AiLunaPro UI.
+</Note>
+
+<Note>
+The API key controls which workspace the assistant sees. Treat it like any other credential — do not commit it to source control or paste it into shared chats.
+</Note>

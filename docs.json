@@ -1,55 +1,289 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Voice AiLunaPro",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#7C3AED",
+    "light": "#22D3EE",
+    "dark": "#6D28D9"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "navigation": {
-    "pages": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
+        "tab": "Guides",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              {
+                "group": "Introduction",
+                "pages": [
+                  "getting-started/index",
+                  "getting-started/prerequisites",
+                  "getting-started/troubleshooting"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Build your First Agent",
+            "pages": [
+              "getting-started/first-agent",
+              "getting-started/trigger-calls-from-your-backend",
+              "getting-started/send-call-data-with-webhooks",
+              "getting-started/connect-telephony",
+              "getting-started/add-tools-and-knowledge-base"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "core-concepts/how-ailunapro-works",
+              "core-concepts/workflows-and-agents",
+              "core-concepts/calls-and-runs",
+              "core-concepts/context-and-variables",
+              "core-concepts/campaigns"
+            ]
+          },
+          {
+            "group": "Configurations",
+            "pages": [
+              "configurations/inference-providers",
+              "configurations/llm",
+              "configurations/voice",
+              "configurations/transcriber",
+              "configurations/api-keys",
+              "configurations/agent-uuid",
+              "configurations/interruption",
+              "configurations/tracing",
+              "configurations/call-events"
+            ]
+          },
+          {
+            "group": "Voice Agent Builder",
+            "pages": [
+              "voice-agent/introduction",
+              "voice-agent/editing-a-workflow",
+              "voice-agent/pre-recorded-audio",
+              "voice-agent/template-variables",
+              "voice-agent/pre-call-data-fetch",
+              {
+                "group": "Tools",
+                "pages": [
+                  "voice-agent/tools/introduction",
+                  {
+                    "group": "Built-in Tools",
+                    "pages": [
+                      "voice-agent/tools/call-transfer",
+                      "voice-agent/tools/transfer-agent",
+                      "voice-agent/tools/end-call"
+                    ]
+                  },
+                  {
+                    "group": "Custom Tools",
+                    "pages": [
+                      "voice-agent/tools/http-api",
+                      "voice-agent/tools/mcp-tool"
+                    ]
+                  }
+                ]
+              },
+              "voice-agent/knowledge-base",
+              {
+                "group": "Nodes",
+                "pages": [
+                  "voice-agent/start-call",
+                  "voice-agent/end-call",
+                  "voice-agent/agent",
+                  "voice-agent/global",
+                  "voice-agent/qa",
+                  "voice-agent/api-trigger",
+                  "voice-agent/webhook"
+                ]
+              },
+              "voice-agent/add-to-website"
+            ]
+          },
+          {
+            "group": "Telephony",
+            "pages": [
+              "integrations/telephony/overview",
+              "integrations/telephony/inbound",
+              "integrations/telephony/ailunapro-sip",
+              "integrations/telephony/twilio",
+              "integrations/telephony/vonage",
+              "integrations/telephony/plivo",
+              "integrations/telephony/telnyx",
+              "integrations/telephony/cloudonix",
+              "integrations/telephony/exotel",
+              "integrations/telephony/vobiz",
+              "integrations/telephony/whatsapp",
+              "integrations/telephony/asterisk-ari",
+              "integrations/telephony/vicidial",
+              "integrations/telephony/webhooks",
+              "integrations/telephony/agent-stream",
+              "integrations/telephony/custom"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "tag": "NEW",
+            "pages": [
+              "integrations/mcp",
+              "integrations/tuner",
+              "integrations/paygent",
+              "integrations/noveum"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developer",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Guides",
+            "pages": [
+              "developer/workflow-schema",
+              "developer/call-dispositions",
+              "developer/webhooks"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "icon": "square-terminal",
+        "groups": [
+          {
+            "group": "Resources",
+            "pages": [
+              {
+                "group": "API Keys",
+                "pages": [
+                  "api-reference/api-keys",
+                  "api-reference/api-keys/create",
+                  "api-reference/api-keys/list",
+                  "api-reference/api-keys/archive",
+                  "api-reference/api-keys/reactivate"
+                ]
+              },
+              {
+                "group": "Agents",
+                "pages": [
+                  "api-reference/agents",
+                  "api-reference/agents/create-from-definition",
+                  "api-reference/agents/create-from-template",
+                  "api-reference/agents/list",
+                  "api-reference/agents/count",
+                  "api-reference/agents/get",
+                  "api-reference/agents/update",
+                  "api-reference/agents/archive",
+                  "api-reference/agents/validate",
+                  {
+                    "group": "Runs",
+                    "pages": [
+                      "api-reference/agents/runs/create",
+                      "api-reference/agents/runs/list",
+                      "api-reference/agents/runs/get"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Runs",
+                "pages": [
+                  "api-reference/runs",
+                  "api-reference/runs/trigger",
+                  "api-reference/runs/trigger-workflow",
+                  "api-reference/runs/get-run",
+                  "api-reference/runs/list-runs",
+                  "api-reference/runs/download",
+                  "api-reference/runs/inbound"
+                ]
+              },
+              {
+                "group": "Campaigns",
+                "pages": [
+                  "api-reference/campaigns",
+                  "api-reference/campaigns/upload-contacts",
+                  "api-reference/campaigns/create",
+                  "api-reference/campaigns/list",
+                  "api-reference/campaigns/get",
+                  "api-reference/campaigns/update",
+                  "api-reference/campaigns/start",
+                  "api-reference/campaigns/pause",
+                  "api-reference/campaigns/resume",
+                  "api-reference/campaigns/progress",
+                  "api-reference/campaigns/runs"
+                ]
+              },
+              {
+                "group": "Telephony Configurations",
+                "pages": [
+                  "api-reference/telephony-configs",
+                  "api-reference/telephony-configs/providers",
+                  "api-reference/telephony-configs/list",
+                  "api-reference/telephony-configs/create",
+                  "api-reference/telephony-configs/get",
+                  "api-reference/telephony-configs/update",
+                  "api-reference/telephony-configs/delete",
+                  "api-reference/telephony-configs/set-default-outbound",
+                  {
+                    "group": "Phone Numbers",
+                    "pages": [
+                      "api-reference/telephony-configs/phone-numbers/list",
+                      "api-reference/telephony-configs/phone-numbers/create",
+                      "api-reference/telephony-configs/phone-numbers/get",
+                      "api-reference/telephony-configs/phone-numbers/update",
+                      "api-reference/telephony-configs/phone-numbers/delete",
+                      "api-reference/telephony-configs/phone-numbers/set-default-caller"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Authentication & Errors",
+            "pages": [
+              "api-reference/overview",
+              "api-reference/authentication",
+              "api-reference/errors"
+            ]
+          }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/ailunapro-logo.png",
+    "dark": "/logo/ailunapro-logo.png",
+    "href": "https://docs.ailunapro.com"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:support@mintlify.com"
+        "href": "mailto:service@ailunapro.com"
+      },
+      {
+        "label": "Pricing",
+        "href": "https://voice.ailunapro.com/pricing"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "href": "https://voice.ailunapro.com"
     }
   },
+  "search": {
+    "prompt": "Search agents, tools, telephony, webhooks…"
+  },
+  "customCSS": "/custom.css",
   "contextual": {
     "options": [
       "copy",
@@ -64,9 +298,28 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "website": "https://ailunapro.com"
     }
-  }
+  },
+  "api": {
+    "openapi": "api-reference/openapi.json"
+  },
+  "redirects": [
+    {
+      "source": "/core-concepts/how-dograh-works",
+      "destination": "/core-concepts/how-ailunapro-works"
+    },
+    {
+      "source": "/integrations/telephony/dograh-sip",
+      "destination": "/integrations/telephony/ailunapro-sip"
+    },
+    {
+      "source": "/voice-agent/tools",
+      "destination": "/voice-agent/tools/introduction"
+    },
+    {
+      "source": "/getting-started",
+      "destination": "/getting-started/index"
+    }
+  ]
 }
