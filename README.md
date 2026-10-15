@@ -12,3 +12,5 @@ Source of https://docs.ailunapro.com (Mintlify). Mirror of `docs/` in andrecedri
 - Product name: **Voice AiLunaPro** (first mention), **AiLunaPro** afterwards.
 - Screenshots come from the real app (dark theme by default) — never from a third-party brand.
 - App: https://voice.ailunapro.com · API: https://voice-api.ailunapro.com · Support: service@ailunapro.com
+
+<!-- sync 2026-10-15T15:45:51Z -->
